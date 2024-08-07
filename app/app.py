@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template
-from sqlHelper import SQLHelper
+from SQLHelper import SQLHelper
 
 #################################################
 # Flask Setup
