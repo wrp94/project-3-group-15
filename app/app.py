@@ -1,6 +1,4 @@
 from flask import Flask, jsonify, render_template
-import pandas as pd
-import numpy as np
 from sqlHelper import SQLHelper
 
 #################################################
