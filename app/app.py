@@ -36,11 +36,29 @@ def about_us():
 
 
 # SQL Queries
-@app.route("/api/v1.0/get_dashboard/<min_attempts>/<region>")
-def get_dashboard(min_attempts, region):
-    return None
+@app.route("/api/v1.0/get_bar/<gender>/<marital_status>")
+def get_bar(gender, marital_status):
+    data = sql.get_bar(gender, marital_status)
+
+    return jsonify(data)
 
 
-@app.route("/api/v1.0/get_map/<min_attempts>/<region>")
-def get_map(min_attempts, region):
-    return None
+@app.route("/api/v1.0/get_map/<occupation>")
+def get_map(occupation):
+    data = sql.get_map(occupation)
+
+    return jsonify(data)
+
+
+@app.route("/api/v1.0/get_donut/<gender>/<marital_status>")
+def get_donut(gender, marital_status):
+    data = sql.get_donut(gender, marital_status)
+
+    return jsonify(data)
+
+
+@app.route("/api/v1.0/get_violin/<gender>/<marital_status>")
+def get_violin(gender, marital_status):
+    data = sql.get_violin(gender, marital_status)
+
+    return jsonify(data)

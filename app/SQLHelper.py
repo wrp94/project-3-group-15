@@ -1,10 +1,8 @@
-import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, text, func
+from sqlalchemy import create_engine
 
 import pandas as pd
-import numpy as np
 
 
 # The Purpose of this Class is to separate out any Database logic
@@ -29,23 +27,70 @@ class SQLHelper():
         # reflect the tables
         self.Base.prepare(autoload_with=self.engine)
 
-
     #################################################
     # Database Queries
     #################################################
 
-    def get_bar(self, min_attempts, region):
+    def get_educational_bar(self, gender, marital_status):
 
-        return None
+        OnlineFoods = self.Base.classes.onlinefoods
 
-    def get_pie(self, min_attempts, region):
+        session = Session(bind=self.engine)
 
-        return None
+        educational_bar_data = session.query(
+            OnlineFoods.educational_qualifications).filter(
+            OnlineFoods.gender == gender,
+            OnlineFoods.marital_status == marital_status).all()
 
-    def get_table(self, min_attempts, region):
+        session.close()
 
-        return None
+        df = pd.DataFrame(educational_bar_data)
 
-    def get_map(self, min_attempts, region):
+        return df.to_dict()
 
-        return None
+    def get_employment_donut(self, gender, marital_status):
+
+        OnlineFoods = self.Base.classes.onlinefoods
+
+        session = Session(bind=self.engine)
+
+        occupation_donut_data = session.query(OnlineFoods.occupation).filter(
+            OnlineFoods.gender == gender,
+            OnlineFoods.marital_status == marital_status).all()
+
+        session.close()
+
+        df = pd.DataFrame(occupation_donut_data)
+
+        return df.to_dict()
+
+    def get_violin(self, gender, marital_status):
+
+        OnlineFoods = self.Base.classes.onlinefoods
+
+        session = Session(bind=self.engine)
+
+        violin_data = session.query(OnlineFoods.age).filter(
+            OnlineFoods.gender == gender,
+            OnlineFoods.marital_status == marital_status).all()
+
+        session.close()
+
+        df = pd.DataFrame(violin_data)
+
+        return df.to_dict()
+
+    def get_map(self, occupation):
+
+        OnlineFoods = self.Base.classes.onlinefoods
+
+        session = Session(bind=self.engine)
+
+        map_data = session.query(OnlineFoods.latitude, OnlineFoods.longitude).\
+            filter(OnlineFoods.occupation == occupation).all()
+
+        session.close()
+
+        df = pd.DataFrame(map_data)
+
+        return df.to_dict()
