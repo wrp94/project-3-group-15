@@ -60,3 +60,7 @@ def get_violin(gender, marital_status):
     data = sql.get_violin(gender, marital_status)
 
     return jsonify(data)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
