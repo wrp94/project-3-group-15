@@ -1,6 +1,6 @@
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 
 import pandas as pd
 
@@ -31,16 +31,18 @@ class SQLHelper():
     # Database Queries
     #################################################
 
-    def get_educational_bar(self, gender, marital_status):
+    def get_bar(self, gender, marital_status):
 
         OnlineFoods = self.Base.classes.onlinefoods
 
         session = Session(bind=self.engine)
 
         educational_bar_data = session.query(
-            OnlineFoods.educational_qualifications).filter(
+            OnlineFoods.educational_qualifications,
+            func.count(OnlineFoods.educational_qualifications)).filter(
             OnlineFoods.gender == gender,
-            OnlineFoods.marital_status == marital_status).all()
+            OnlineFoods.marital_status == marital_status).group_by(
+            OnlineFoods.educational_qualifications).all()
 
         session.close()
 
@@ -48,15 +50,18 @@ class SQLHelper():
 
         return df.to_dict()
 
-    def get_employment_donut(self, gender, marital_status):
+    def get_donut(self, gender, marital_status):
 
         OnlineFoods = self.Base.classes.onlinefoods
 
         session = Session(bind=self.engine)
 
-        occupation_donut_data = session.query(OnlineFoods.occupation).filter(
+        occupation_donut_data = session.query(
+            OnlineFoods.occupation,
+            func.count(OnlineFoods.occupation)).filter(
             OnlineFoods.gender == gender,
-            OnlineFoods.marital_status == marital_status).all()
+            OnlineFoods.marital_status == marital_status).group_by(
+            OnlineFoods.occupation).all()
 
         session.close()
 
