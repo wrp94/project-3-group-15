@@ -15,7 +15,7 @@ sql = SQLHelper()
 # HTML ROUTES
 @app.route("/")
 def index():
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 @app.route("/dashboard")
@@ -34,9 +34,9 @@ def about_us():
 
 
 # SQL Queries
-@app.route("/api/v1.0/get_bar/<gender>/<marital_status>")
-def get_bar(gender, marital_status):
-    data = sql.get_bar(gender, marital_status)
+@app.route("/api/v1.0/get_dashboard/<gender>/<marital_status>")
+def get_dashboard(gender, marital_status):
+    data = sql.get_dashboard(gender, marital_status)
 
     return jsonify(data)
 
@@ -44,20 +44,6 @@ def get_bar(gender, marital_status):
 @app.route("/api/v1.0/get_map/<occupation>")
 def get_map(occupation):
     data = sql.get_map(occupation)
-
-    return jsonify(data)
-
-
-@app.route("/api/v1.0/get_donut/<gender>/<marital_status>")
-def get_donut(gender, marital_status):
-    data = sql.get_donut(gender, marital_status)
-
-    return jsonify(data)
-
-
-@app.route("/api/v1.0/get_violin/<gender>/<marital_status>")
-def get_violin(gender, marital_status):
-    data = sql.get_violin(gender, marital_status)
 
     return jsonify(data)
 
