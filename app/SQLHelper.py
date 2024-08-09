@@ -1,9 +1,6 @@
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-
-import pandas as pd
-import numpy as np
+from sqlalchemy import create_engine, func, true
 
 
 # The Purpose of this Class is to separate out any Database logic
@@ -39,13 +36,14 @@ class SQLHelper():
         educational_bar_data = session.query(
             OnlineFoods.educational_qualifications,
             func.count(OnlineFoods.educational_qualifications)).filter(
-            OnlineFoods.gender == gender,
-            OnlineFoods.marital_status == marital_status).group_by(
+                true() if gender == "*" else OnlineFoods.gender == gender).filter(
+                true() if marital_status == "*" else OnlineFoods.marital_status == marital_status).group_by(
             OnlineFoods.educational_qualifications).all()
 
         session.close()
 
-        return {education_level: count for education_level, count in educational_bar_data}
+        return {education_level: count
+                for education_level, count in educational_bar_data}
 
     def get_donut(self, gender, marital_status):
 
@@ -56,13 +54,14 @@ class SQLHelper():
         occupation_donut_data = session.query(
             OnlineFoods.occupation,
             func.count(OnlineFoods.occupation)).filter(
-            OnlineFoods.gender == gender,
-            OnlineFoods.marital_status == marital_status).group_by(
+                true() if gender == "*" else OnlineFoods.gender == gender).filter(
+                true() if marital_status == "*" else OnlineFoods.marital_status == marital_status).group_by(
             OnlineFoods.occupation).all()
 
         session.close()
 
-        return {occupation: count for occupation, count in occupation_donut_data}
+        return {occupation: count
+                for occupation, count in occupation_donut_data}
 
     def get_violin(self, gender, marital_status):
 
@@ -73,8 +72,8 @@ class SQLHelper():
         violin_data = session.query(
             OnlineFoods.age,
             func.count(OnlineFoods.age)).filter(
-            OnlineFoods.gender == gender,
-            OnlineFoods.marital_status == marital_status).group_by(
+                true() if gender == "*" else OnlineFoods.gender == gender).filter(
+                true() if marital_status == "*" else OnlineFoods.marital_status == marital_status).group_by(
                 OnlineFoods.age).all()
 
         session.close()
@@ -82,6 +81,12 @@ class SQLHelper():
         return {age: count for age, count in violin_data}
 
     def get_dashboard(self, gender, marital_status):
+
+        if gender == "All":
+            gender = '*'
+        if marital_status == "All":
+            marital_status = '*'
+
         data = [self.get_bar(gender, marital_status),
                 self.get_donut(gender, marital_status),
                 self.get_violin(gender, marital_status)]
@@ -95,7 +100,7 @@ class SQLHelper():
         session = Session(bind=self.engine)
 
         map_data = session.query(
-            OnlineFoods.latitude, 
+            OnlineFoods.latitude,
             OnlineFoods.longitude,
             OnlineFoods.educational_qualifications).\
             filter(OnlineFoods.occupation == occupation).all()
@@ -104,7 +109,7 @@ class SQLHelper():
 
         data = []
 
-        for i in range(len(map_data)): 
+        for i in range(len(map_data)):
             row = map_data[i]
 
             latitude = row[0]
