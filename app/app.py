@@ -22,6 +22,9 @@ def index():
 def dashboard():
     return render_template("dashboard.html")
 
+@app.route("/works_cited")
+def works_cited():
+    return render_template("works_cited.html")
 
 @app.route("/map")
 def map():
