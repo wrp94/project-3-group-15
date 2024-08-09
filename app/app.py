@@ -32,8 +32,6 @@ def map():
 def about_us():
     return render_template("about_us.html")
     
-
-
 # SQL Queries
 @app.route("/api/v1.0/get_dashboard/<gender>/<marital_status>")
 def get_dashboard(gender, marital_status):
