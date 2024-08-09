@@ -103,7 +103,7 @@ class SQLHelper():
             OnlineFoods.latitude,
             OnlineFoods.longitude,
             OnlineFoods.educational_qualifications).\
-            filter(OnlineFoods.occupation == occupation).all()
+            filter(true() if occupation == "All" else OnlineFoods.occupation == occupation).all()
 
         session.close()
 
