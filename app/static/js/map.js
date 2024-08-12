@@ -1,6 +1,4 @@
 
-
-
 // GOAL 1
 // Can I render a basic base map? - Set up Leaflet correctly
 // Can we fetch the data that we need to plot?
@@ -30,7 +28,7 @@ function createMap(data) {
     if (row) {
         // extract coord
         let point = [latitude, longitude];
-        console.log(point)
+        console.log(row)
         // make marker
         let marker = L.marker(point);
         markers.addLayer(marker);
@@ -65,7 +63,7 @@ function createMap(data) {
 
   //rebulid map
 
-  d3.select("#map-container").html("<div id='map'</div>");
+  d3.select("#map-container").html("<div id='map'></div>");
 
 
   let myMap = L.map("map", {
@@ -88,10 +86,12 @@ function init() {
 
 function update(newOccupation) {
     // update 
-        let url = `/api/v1.0/get_map/<occupation>${newOccupation}`;
+        let url = `/api/v1.0/get_map/occupation${newOccupation}`;
         d3.json(url).then(function(data) {
             createMap(data);
      })};
 
+
+d3.select("#filter").on("click", init);
 
 init();
