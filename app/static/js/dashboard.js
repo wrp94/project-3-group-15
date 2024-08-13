@@ -38,9 +38,9 @@ function createBar(bar_data) {
     let data = [trace];
 
     let layout = {
-        title: 'Education Distribution',
-        xaxis: {title: 'Count'},
-        yaxis: {title: 'Occupation'}
+        title: 'Education Counts',
+        xaxis: {title: 'Education'},
+        yaxis: {title: 'Count'}
     };
 
     Plotly.newPlot('bar_chart', data, layout);
@@ -64,7 +64,7 @@ function createPie(pie_data) {
     let data = [trace];
 
     let layout = {
-        title: 'Occupation Distribution',
+        title: 'Occupations',
     };
 
     Plotly.newPlot('pie_chart', data, layout);
@@ -79,7 +79,7 @@ function createViolin(violin_data) {
         opacity: 0.7,
         box: {visible: true},
         meanline: {visible: true},
-        y0: "Counts",
+        y0: "Count",
         line: {color: "black"}
     };
 
