@@ -19,40 +19,69 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Group 15</a>
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/map">Map</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about_us">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/works_cited">Works Cited</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="static/images/logo.png" alt="logo" style="width: 50px; height: 50px;">
+        </a>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about_us">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/works_cited">Works Cited</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
+<!-- Better Break with Margin -->
+<div class="container mt-4">
     <!-- Homepage Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1>Welcome to Our Food Delivery Data Analysis</h1>
-                <p>This data analysis explores trends and insights in the food delivery industry, providing valuable information for stakeholders.</p>
-                <p>Visit the Dashboard and Map pages for interactive visualizations and detailed analysis.</p>
-            </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Welcome to Our Food Delivery Data Analysis</h1>
+            <p>This data analysis explores trends and insights of our food delivery dataset, providing information on customer demographics.</p>
+            <p>Visit the Dashboard and Map pages for interactive visualizations and detailed analysis.</p>
         </div>
     </div>
-</body>
 
-</html>
+    <!-- Images Section -->
+    <div class="row mt-5">
+        <div class="col-md-6 text-center">
+            <a href="/dashboard">
+                <img src="/static/images/dash.png" alt="Dashboard Image" style="width: 150px; height: 150px;">
+                <p style="padding-top: 10px;"><strong>Dashboard</strong></p>
+            </a>
+        </div>
+        <div class="col-md-6 text-center">
+            <a href="/map">
+                <img src="/static/images/map.png" alt="Map Image" style="width: 150px; height: 150px;">
+                <p style="padding-top: 10px;"><strong>Map</strong></p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Research Questions Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2>Research Questions</h2>
+            <ol>
+                <li>Is there a difference in education level based on gender and marital status?</li>
+                <li>Does the gender or marital status of individuals relate to their occupation?</li>
+                <li>What is the distribution of ages for different genders and marital statuses?</li>
+                <li>Does an individual’s location and occupation indicate their level of education?</li>
+            </ol>
+        </div>
+    </div>
+</div>

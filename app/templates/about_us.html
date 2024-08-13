@@ -16,7 +16,8 @@
 
         .photo-box img {
             width: 100%; /* Set the width of the image to 100% of its container */
-            height: auto; /* Maintain the aspect ratio */
+            height: 300px; /* Set a specific height for the images */
+            object-fit: cover; /* Maintain the aspect ratio and cover the container */
         }
 
         .about-me-section {
@@ -35,10 +36,12 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Group 15</a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="static/images/logo.png" alt="logo" style="width: 50px; height: 50px;">
+        </a>
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
@@ -65,29 +68,25 @@
     </div>
 
     <!-- About Me Section -->
-    <div class="container about-me-section">
-        <div class="row">
-            <!-- Photo Box 1 -->
-            <div class="col-md-4 photo-box">
-                <img src="https://via.placeholder.com/150" alt="Photo 1">
-                <h3>Kenny Berry</h3>
-                <p>About Me 1</p>
-            </div>
-            <!-- Photo Box 2 -->
-            <div class="col-md-4 photo-box">
-                <img src="https://via.placeholder.com/150" alt="Photo 2">
-                <h3>Will Parker</h3>
-                <p>About Me 2</p>
-            </div>
-            <!-- Photo Box 3 -->
-            <div class="col-md-4 photo-box">
-                <img src="https://media.licdn.com/dms/image/C4E03AQE1maBvt943lg/profile-displayphoto-shrink_800_800/0/1561087839698?e=1728518400&v=beta&t=wIbGbeUHPnDzPjTX91pVLI8nJq5tNcmoBdeA-3Tn0nw" alt="Photo 3">
-                <h3>Jessie Wayne</h3>
-                <p>About Me 3</p>
-            </div>
+<div class="container about-me-section">
+    <div class="row">
+        <!-- Photo Box 1 -->
+        <div class="col-md-4 photo-box">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQEfgnltE3_2ow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719021451158?e=1729123200&v=beta&t=KfKfhcrzapwQDQ5bb2qyE4q7uz02aDP7RM1esVu-Ew4" alt="Photo 1">
+            <h3>Kenny Berry</h3>
+            <p>About Me 1</p>
+        </div>
+        <!-- Photo Box 2 -->
+        <div class="col-md-4 photo-box">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczPINKU2-MXyblD3P5Vr7t1r3fUtNbyJtOZP5_X4GfyifLmOqtp_r3O4304iOE1hVD5hws5GFmSg8dQS2l9-DVCDyDkhq-077Dsv6dncLkXUzwX4pGLe=w2400" alt="Photo 2">
+            <h3>Will Parker</h3>
+            <p>My name is Will and I live on the Chesapeake Bay with my two cats and two dogs. I’m a barista with a background in Computer Science.</p>
+        </div>
+        <!-- Photo Box 3 -->
+        <div class="col-md-4 photo-box">
+            <img src="https://media.licdn.com/dms/image/C4E03AQE1maBvt943lg/profile-displayphoto-shrink_800_800/0/1561087839698?e=1728518400&v=beta&t=wIbGbeUHPnDzPjTX91pVLI8nJq5tNcmoBdeA-3Tn0nw" alt="Photo 3">
+            <h3>Jessie Wayne</h3>
+            <p>My name is Jessie and I am from Cleveland, Ohio. I manage email campaigns for NatBio, a light therapy device company and I spend all my free time at the barn with my horse, Wesley.</p>
         </div>
     </div>
-
-</body>
-
-</html>
+</div>
