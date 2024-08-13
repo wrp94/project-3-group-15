@@ -23,6 +23,7 @@ function createMap(data) {
     let row = data[i];
     let latitude = row.latitude;
     let longitude = row.longitude;
+    let education = row.education
 
     // create marker
     if (row) {
@@ -31,6 +32,8 @@ function createMap(data) {
         console.log(row)
         // make marker
         let marker = L.marker(point);
+        let popup = `<h1>${education}</h1>`;
+        marker.bindPopup(popup);
         markers.addLayer(marker);
 
          // add to heatmap
@@ -67,9 +70,9 @@ function createMap(data) {
 
 
   let myMap = L.map("map", {
-    center: [40.7128, -74.0059],
-    zoom: 5,
-    layers: [street]
+    center: [13, 77.5],
+    zoom: 9,
+    layers: [street, markers]
   });
 
 
@@ -86,7 +89,7 @@ function init() {
 
 function update(newOccupation) {
     // update 
-        let url = `/api/v1.0/get_map/occupation${newOccupation}`;
+        let url = `/api/v1.0/get_map/${newOccupation}`;
         d3.json(url).then(function(data) {
             createMap(data);
      })};
