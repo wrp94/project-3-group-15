@@ -26,8 +26,8 @@ The only trends we could find in the limited time we worked on this project were
 
 ## Works Cited
 
-Dataset: <https://www.kaggle.com/datasets/sudarshan24byte/online-food-dataset>
+###### Dataset: <https://www.kaggle.com/datasets/sudarshan24byte/online-food-dataset>
 
-Coolors (for theming): <https://coolors.co/05668d-427aa1-ebf2fa-679436-a5be00>
+###### Coolors (for theming): <https://coolors.co/05668d-427aa1-ebf2fa-679436-a5be00>
 
-Inspiration: <https://www.kaggle.com/datasets/rajatkumar30/food-delivery-time>
+###### Inspiration: <https://www.kaggle.com/datasets/rajatkumar30/food-delivery-time>
